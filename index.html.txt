@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON CHEATS | Магазин</title>
+    <style>
+        /* Базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Фоновое свечение */
+        .glow-bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Навигация */
+        header {
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #6a0dad, #8a2be2);
+            color: white;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.8);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #b388ff;
+            border: 2px solid #8a2be2;
+        }
+
+        .btn-outline:hover {
+            background: #8a2be2;
+            color: white;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Главный экран */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #b388ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Секция с обзором (Картинки) */
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin: 80px 0 40px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-item {
+            background: #111;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #222;
+        }
+
+        /* Секция с ценами */
+        .pricing {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            margin-bottom: 100px;
+        }
+
+        .price-card {
+            background: #111;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #8a2be2;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .price-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #b388ff;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 20px;
+            color: #666;
+        }
+
+        /* Футер */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            font-size: 14px;
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            .hero h1 { font-size: 36px; }
+            .hero { padding: 60px 20px; }
+            .price-card { width: 100%; max-width: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <header>
+        <div class="logo">NEON CHEATS</div>
+        <a href="https://t.me/espachov" class="btn btn-outline" target="_blank">Телеграм</a>
+    </header>
+
+    <main>
+        <!-- Главный экран -->
+        <section class="hero">
+            <h1>ЛУЧШИЙ ЧИТ ДЛЯ STANDOFF</h1>
+            <p>Незаметный софт, максимальная производительность. ESP, Aimbot, TriggerBot и полный обход античита.</p>
+            
+            <div class="hero-buttons">
+                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить чит</a>
+                <a href="https://t.me/cheathard" class="btn btn-outline" target="_blank">Перейти в ТГК</a>
+            </div>
+        </section>
+
+        <!-- Обзор (Галерея) -->
+        <h2 class="section-title">Обзор софта</h2>
+        <div class="gallery">
+            <!-- Твои картинки -->
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/vxdVmbCJ/photo-1-2026-10-18-18-17-28.jpg" alt="Скриншот 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.postimg.cc/vxdVmbpF/photo-2-2026-10-18-18-17-28.jpg" alt="Скриншот 2">
+            </div>
+            <!-- Если найдешь ссылки на 3 и 4 фото, просто замени эти ссылки ниже -->
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x400/1a1a1a/8a2be2?text=Menu" alt="Menu">
+            </div>
+        </div>
+
+        <!-- Цены -->
+        <h2 class="section-title">Прайс-лист</h2>
+        <div class="pricing">
+            <div class="price-card" style="border-color: #8a2be2; box-shadow: 0 0 20px rgba(138,43,226,0.2);">
+                <h3>На месяц</h3>
+                <div class="price">200 <span>₽</span></div>
+                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Навсегда</h3>
+                <div class="price">400 <span>₽</span></div>
+                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 NEON CHEATS. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
