@@ -37,7 +37,7 @@
         /* Навигация */
         header {
             width: 100%;
-            padding: 20px 50px;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -67,6 +67,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .btn-primary {
@@ -95,12 +96,14 @@
         /* Главный экран */
         .hero {
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 5%;
             max-width: 800px;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 64px;
+            font-size: clamp(32px, 6vw, 64px); /* Адаптивный размер шрифта */
+            line-height: 1.1;
             margin-bottom: 20px;
             background: linear-gradient(to right, #ffffff, #b388ff);
             -webkit-background-clip: text;
@@ -109,7 +112,7 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: clamp(16px, 2vw, 20px);
             color: #a0a0a0;
             margin-bottom: 40px;
             line-height: 1.6;
@@ -122,22 +125,22 @@
             flex-wrap: wrap;
         }
 
-        /* Секция с обзором (Картинки) */
+        /* Секция с обзором */
         .section-title {
             text-align: center;
-            font-size: 36px;
-            margin: 80px 0 40px;
+            font-size: clamp(28px, 4vw, 36px);
+            margin: 60px 0 40px;
             color: #fff;
             text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             width: 100%;
             max-width: 1200px;
-            padding: 0 20px;
+            padding: 0 5%;
             margin-bottom: 80px;
         }
 
@@ -147,6 +150,7 @@
             border-radius: 15px;
             padding: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -156,19 +160,47 @@
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: auto;
+            aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 10px;
             background: #222;
         }
 
-        /* Секция с ценами */
+        /* Модальное окно для картинок (увеличение при клике) */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+            cursor: zoom-out;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Цены */
         .pricing {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            padding: 0 20px;
+            padding: 0 5%;
             margin-bottom: 100px;
         }
 
@@ -178,7 +210,8 @@
             border-radius: 15px;
             padding: 40px;
             text-align: center;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             position: relative;
             transition: all 0.3s ease;
         }
@@ -215,14 +248,6 @@
             border-top: 1px solid rgba(138, 43, 226, 0.2);
             font-size: 14px;
         }
-
-        /* Адаптив */
-        @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .hero h1 { font-size: 36px; }
-            .hero { padding: 60px 20px; }
-            .price-card { width: 100%; max-width: 350px; }
-        }
     </style>
 </head>
 <body>
@@ -235,7 +260,6 @@
     </header>
 
     <main>
-        <!-- Главный экран -->
         <section class="hero">
             <h1>ЛУЧШИЙ ЧИТ ДЛЯ STANDOFF</h1>
             <p>Незаметный софт, максимальная производительность. ESP, Aimbot и полный обход античита.</p>
@@ -246,23 +270,19 @@
             </div>
         </section>
 
-        <!-- Обзор (Галерея) -->
         <h2 class="section-title">Обзор софта</h2>
         <div class="gallery">
-            <!-- Твои картинки -->
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openModal(this)">
                 <img src="https://i.postimg.cc/vxdVmbCJ/photo-1-2026-10-18-18-17-28.jpg" alt="Скриншот 1">
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openModal(this)">
                 <img src="https://i.postimg.cc/vxdVmbpF/photo-2-2026-10-18-18-17-28.jpg" alt="Скриншот 2">
             </div>
-            <!-- Если найдешь ссылки на 3 и 4 фото, просто замени эти ссылки ниже -->
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openModal(this)">
                 <img src="https://via.placeholder.com/600x400/1a1a1a/8a2be2?text=Menu" alt="Menu">
             </div>
         </div>
 
-        <!-- Цены -->
         <h2 class="section-title">Прайс-лист</h2>
         <div class="pricing">
             <div class="price-card" style="border-color: #8a2be2; box-shadow: 0 0 20px rgba(138,43,226,0.2);">
@@ -282,6 +302,26 @@
     <footer>
         <p>&copy; 2026 FATALITY. Все права защищены.</p>
     </footer>
+
+    <!-- Модальное окно -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- Скрипт для открытия картинок -->
+    <script>
+        function openModal(element) {
+            var imgSrc = element.querySelector('img').src;
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImg");
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
