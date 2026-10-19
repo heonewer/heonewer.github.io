@@ -98,7 +98,7 @@
             background: linear-gradient(to right, #ffffff, #b388ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            word-wrap: break-word; /* Перенос длинных слов */
+            word-wrap: break-word;
         }
 
         .hero p {
@@ -113,7 +113,7 @@
             display: flex;
             gap: 15px;
             justify-content: center;
-            flex-wrap: wrap; /* Кнопки переносятся на новую строку, если не влезают */
+            flex-wrap: wrap;
             width: 100%;
         }
 
@@ -129,7 +129,7 @@
         /* Галерея */
         .gallery {
             display: grid;
-            grid-template-columns: 1fr; /* На телефоне 1 колонка */
+            grid-template-columns: 1fr;
             gap: 15px;
             width: 100%;
             max-width: 1000px;
@@ -177,7 +177,7 @@
         /* Прайс-лист */
         .pricing {
             display: flex;
-            flex-direction: column; /* На телефоне друг под другом */
+            flex-direction: column;
             align-items: center;
             gap: 20px;
             width: 100%;
@@ -224,7 +224,7 @@
             margin-top: auto;
         }
 
-        /* Адаптация для ПК (экраны от 768px) */
+        /* Адаптация для ПК */
         @media (min-width: 768px) {
             header { padding: 20px 50px; }
             .logo { font-size: 24px; }
@@ -244,7 +244,8 @@
 
     <header>
         <div class="logo">FATALITY</div>
-        <a href="https://t.me/espachov" class="btn btn-outline" target="_blank">Телеграм</a>
+        <!-- Ссылка в шапке -->
+        <a href="https://t.me/h3onewer" class="btn btn-outline" target="_blank">Телеграм</a>
     </header>
 
     <main style="width: 100%; display: flex; flex-direction: column; align-items: center;">
@@ -253,7 +254,8 @@
             <p>Незаметный софт, максимальная производительность. ESP, Aimbot и полный обход античита.</p>
             
             <div class="hero-buttons">
-                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить чит</a>
+                <!-- Кнопки под главным текстом -->
+                <a href="https://t.me/h3onewer" class="btn btn-primary" target="_blank">Купить чит</a>
                 <a href="https://t.me/cheathard" class="btn btn-outline" target="_blank">Перейти в ТГК</a>
             </div>
         </section>
@@ -276,13 +278,15 @@
             <div class="price-card" style="border-color: #8a2be2; box-shadow: 0 0 20px rgba(138,43,226,0.2);">
                 <h3>На месяц</h3>
                 <div class="price">200 <span>₽</span></div>
-                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить</a>
+                <!-- Кнопка "Купить" в карточке товара -->
+                <a href="https://t.me/h3onewer" class="btn btn-primary" target="_blank">Купить</a>
             </div>
 
             <div class="price-card">
                 <h3>Навсегда</h3>
                 <div class="price">400 <span>₽</span></div>
-                <a href="https://t.me/espachov" class="btn btn-primary" target="_blank">Купить</a>
+                <!-- Кнопка "Купить" в карточке товара -->
+                <a href="https://t.me/h3onewer" class="btn btn-primary" target="_blank">Купить</a>
             </div>
         </div>
     </main>
@@ -291,7 +295,7 @@
         <p>&copy; 2026 FATALITY. Все права защищены.</p>
     </footer>
 
-    <!-- Модальное окно -->
+    <!-- Модальное окно для фото -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <img class="modal-content" id="modalImg">
     </div>
